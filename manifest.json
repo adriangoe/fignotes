@@ -1,0 +1,7 @@
+{
+  "name": "easynotes",
+  "id": "833423228040912397",
+  "api": "1.0.0",
+  "main": "code.js",
+  "ui": "ui.html"
+}

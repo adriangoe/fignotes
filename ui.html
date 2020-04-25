@@ -1,0 +1,41 @@
+<h2>Sticky Note Generator:</h2>
+<p>Color:</p>
+<form id="colorform">
+  <input type="radio" id="red" name="color" value="red">
+  <label for="red">Red</label>
+  <input type="radio" id="blue" name="color" value="blue">
+  <label for="blue">Blue</label>
+  <input type="radio" id="green" name="color" value="green">
+  <label for="green">Green</label>
+</form>
+<p>Count: <input id="count" value="5"></p>
+<button id="create">Create</button>
+<button id="cancel">Cancel</button>
+<script>
+
+function getRadioVal(form, name) {
+    var val;
+    var radios = form.elements[name];
+    // loop through list of radio buttons
+    for (var i=0, len=radios.length; i<len; i++) {
+        if ( radios[i].checked ) { // radio checked?
+            val = radios[i].value; // if so, hold its value in val
+            break; // and break out of for loop
+        }
+    }
+    return val; // return value of checked radio or undefined if none checked
+}
+
+document.getElementById('create').onclick = () => {
+  const textbox = document.getElementById('count');
+  const count = parseInt(textbox.value, 10);
+  const color = getRadioVal(document.getElementById('colorform'), 'color')
+  console.log(color);
+  parent.postMessage({ pluginMessage: { type: 'create-rectangles', count, color } }, '*')
+}
+
+document.getElementById('cancel').onclick = () => {
+  parent.postMessage({ pluginMessage: { type: 'cancel' } }, '*')
+}
+
+</script>
