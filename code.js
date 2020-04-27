@@ -13,9 +13,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 // You can access browser APIs in the <script> tag inside "ui.html" which has a
 // full browser enviroment (see documentation).
 let colorMap = new Map();
-colorMap.set("blue", { r: 0.627, g: 0.627, b: 1 });
-colorMap.set("red", { r: 1, g: 0.627, b: 0.627 });
-colorMap.set("green", { r: 0.627, g: 1, b: 0.627 });
+colorMap.set("blue", { r: 0.427, g: 0.741, b: 0.917 });
+colorMap.set("red", { r: 1, g: 0.466, b: 0.466 });
+colorMap.set("green", { r: 0.482, g: 0.863, b: 0.725 });
+colorMap.set("yellow", { r: 1, g: 0.729, b: 0.321 });
+colorMap.set("purple", { r: 0.651, g: 0.502, b: 0.973 });
 // This shows the HTML page in "ui.html".
 figma.showUI(__html__);
 // figma.loadFontAsync({ family: "Roboto", style: "Regular" });
