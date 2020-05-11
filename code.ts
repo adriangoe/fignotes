@@ -47,6 +47,7 @@ figma.ui.onmessage = async (msg) => {
       frame.horizontalPadding = 12;
       frame.layoutMode = "VERTICAL";
       frame.counterAxisSizingMode = "AUTO";
+      frame.name = "Fignote";
 
       title.resize(120, 110);
       title.fontSize = 12;
@@ -90,8 +91,8 @@ figma.ui.onmessage = async (msg) => {
 figma.on('selectionchange', () => {
    for (let i = 0; i < figma.currentPage.selection.length; i++) {
      const node = figma.currentPage.selection[0];
-     if (node.type == "FRAME") {
+     if (node.name == "Fignote") {
        figma.currentPage.appendChild(node);
      }
    }
-})
+});

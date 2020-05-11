@@ -48,8 +48,9 @@ figma.ui.onmessage = (msg) => __awaiter(this, void 0, void 0, function* () {
             frame.horizontalPadding = 12;
             frame.layoutMode = "VERTICAL";
             frame.counterAxisSizingMode = "AUTO";
+            frame.name = "Fignote";
             title.resize(120, 110);
-            title.fontSize = 10;
+            title.fontSize = 12;
             title.characters = "Insights";
             name.resize(120, 10);
             name.fontSize = 8;
@@ -86,7 +87,7 @@ figma.ui.onmessage = (msg) => __awaiter(this, void 0, void 0, function* () {
 figma.on('selectionchange', () => {
     for (let i = 0; i < figma.currentPage.selection.length; i++) {
         const node = figma.currentPage.selection[0];
-        if (node.type == "FRAME") {
+        if (node.name == "Fignote") {
             figma.currentPage.appendChild(node);
         }
     }
