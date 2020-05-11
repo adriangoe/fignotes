@@ -1,22 +1,19 @@
-This plugin template uses Typescript. If you are familiar with Javascript, Typescript will
-look very familiar. In fact, valid Javascript code is already valid Typescript code.
+# Intro
 
-Typescript adds type annotations to variables. This allows code editors such as Visual Studio Code
-to provide information about the Figma API while you are writing code, as well as help catch bugs
-you previously didn't notice.
+Fignotes turns Figma into a collaborative space for organizing and synthesizing notes! 
 
-For more information, visit https://www.typescriptlang.org/
+- Create multiple sticky notes on one click
+- Automatically bring selected frame to front
+- Tag notes for easy reference
 
-Using Typescript requires a compiler to convert Typescript (code.ts) into Javascript (code.js)
-for the browser to run.
+Install at https://www.figma.com/community/plugin/838904613852450283/easynotes.
 
-To get the TypeScript compiler working:
+# Developer Notes
 
-1. Download Visual Studio Code if you haven't already: https://code.visualstudio.com/.
-2. Install the TypeScript compiler globally: `sudo npm install -g typescript`.
-3. Open this directory in Visual Studio Code.
-4. Compile TypeScript to JavaScript: Run the "Terminal > Run Build Task..." menu item,
-    then select "tsc: watch - tsconfig.json". You will have to do this again every time
-    you reopen Visual Studio Code.
+This plugin uses Typescript. Edit the code in `code.ts` and then compile it into `code.js` rather than editing `code.js` directly.
 
-That's it! Visual Studio Code will regenerate the JavaScript file every time you save.
+For styles we uses CSS classes provided by https://thomas-lowry.github.io/figma-plugin-ds/.
+
+---
+
+This Plugin is created by [Qiqi Xu](https://qiqixu.co) and [Adrian Goedeckemeyer](https://adriangoe.com)
