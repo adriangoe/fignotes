@@ -1,5 +1,5 @@
 <!-- <h2 class='type type--pos-medium-medium'>Sticky Note</h2> -->
-
+<div style = "padding:4px 8px;">
 <p class='type type--pos-medium-medium'>Color</p>
 <form id="colorform">
   <label class="container">
@@ -24,8 +24,10 @@
   </label>
 </form>
 <p class='type type--pos-medium-medium'>Number <input id="count" type="input" class="input" value="5"></p>
+<p class='type type--pos-medium-medium'>Tag <span class="type type--pos-medium-normal">(optional)</span> <input id="tag" type="input" class="input" placeholder="Tag me!"></p>
 <button id="create" button class='button button--primary'>Create</button>
-<button id="cancel" button class='button button--secondary'>Cancel</button>
+</div>
+
 <script>
 
 function getRadioVal(form, name) {
@@ -44,13 +46,9 @@ function getRadioVal(form, name) {
 document.getElementById('create').onclick = () => {
   const textbox = document.getElementById('count');
   const count = parseInt(textbox.value, 10);
-  const color = getRadioVal(document.getElementById('colorform'), 'color')
-  console.log(color);
-  parent.postMessage({ pluginMessage: { type: 'create-rectangles', count, color } }, '*')
-}
-
-document.getElementById('cancel').onclick = () => {
-  parent.postMessage({ pluginMessage: { type: 'cancel' } }, '*')
+  const color = getRadioVal(document.getElementById('colorform'), 'color');
+  const tag = document.getElementById('tag').value;
+  parent.postMessage({ pluginMessage: { type: 'create-rectangles', count, color, tag } }, '*')
 }
 
 </script>

@@ -13,18 +13,26 @@ colorMap.set("yellow", {r: 1, g: 0.729, b: 0.321});
 colorMap.set("purple", {r: 0.651, g: 0.502, b: 0.973});
 
 // This shows the HTML page in "ui.html".
-figma.showUI(__html__);
+const uiOptions = <ShowUIOptions> {
+  visible: true,
+  width: 300,
+  height: 275
+}
+figma.showUI(__html__, uiOptions);
 // figma.loadFontAsync({ family: "Roboto", style: "Regular" });
 
 function clone(val) {
   return JSON.parse(JSON.stringify(val))
 }
 
+let row = 0;
+
 // Calls to "parent.postMessage" from within the HTML page will trigger this
 // callback. The callback will be passed the "pluginMessage" property of the
 // posted message.
 figma.ui.onmessage = async (msg) => {
   await figma.loadFontAsync({ family: "Roboto", style: "Regular" })
+  await figma.loadFontAsync({ family: "Roboto", style: "Bold" })
 
   // One way of distinguishing between different types of messages sent from
   // your HTML page is to use an object with a "type" property like this.
@@ -35,19 +43,23 @@ figma.ui.onmessage = async (msg) => {
       const frame = figma.createFrame();
       const title = figma.createText();
       const name = figma.createText();
-      frame.verticalPadding = 16;
-      frame.horizontalPadding = 16;
-      title.resize(120, 100);
-      name.resize(120, 20);
-      title.fontSize = 20;
-      name.fontSize = 10;
+      frame.verticalPadding = 12;
+      frame.horizontalPadding = 12;
       frame.layoutMode = "VERTICAL";
       frame.counterAxisSizingMode = "AUTO";
+
+      title.resize(120, 110);
+      title.fontSize = 12;
       title.characters = "Insights";
-      name.characters = "Name";
-      name.textCase = "TITLE";
+
+      name.resize(120, 10);
+      name.fontSize = 8;
+      name.characters = msg.tag;
+      name.textCase = "UPPER";
+      name.fontName = { family: "Roboto", style: "Bold" };
 
       frame.x = i * 166;
+      frame.y = row * 166;
       frame.fills = [{type: 'SOLID', color: colorMap.get(msg.color)}];
       frame.appendChild(title);
       frame.appendChild(name);
@@ -67,6 +79,7 @@ figma.ui.onmessage = async (msg) => {
     }
     figma.currentPage.selection = nodes;
     figma.viewport.scrollAndZoomIntoView(nodes);
+    row += 1;
   }
 
   // Make sure to close the plugin when you're done. Otherwise the plugin will
